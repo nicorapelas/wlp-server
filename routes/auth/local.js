@@ -67,11 +67,10 @@ router.post('/register', async (req, res) => {
       username: email,
       email,
       password,
-      localId: true,
+      bossCreds: true,
       created: Date.now(),
     })
     // Send verification email
-    console.log(`newUser`, newUser)
     await newUser.save()
     return res.send({
       success: `An 'email verification' email has been sent to you. Please open the email and follow the provided instructions.`,

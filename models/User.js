@@ -26,6 +26,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  bossCreds: {
+    type: Boolean,
+    default: false,
+  },
+  staffCreds: {
+    type: Boolean,
+    default: false,
+  },
+  staffStore: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Store',
+  },
   created: {
     type: Date,
     default: Date.now,

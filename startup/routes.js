@@ -1,15 +1,14 @@
 const express = require('express')
 const cors = require('cors')
-
 const root = require('../routes/root/root')
+const stores = require('../routes/stores/stores')
+const games = require('../routes/games/games')
+const financials = require('../routes/financials/financials')
+const staff = require('../routes/staff/staff')
 // Import authentication routes
 const user = require('../routes/auth/local')
-// Import api routes
-const cards = require('../routes/api/cards')
-const error = require('../routes/error/error')
 // Import payment routes
-const yoco = require('../routes/payment/yoco')
-// const payfast = require('../routes/payment/payfast')
+// const yoco = require('../routes/payment/yoco')
 
 module.exports = (app) => {
   // Express middleware
@@ -18,12 +17,12 @@ module.exports = (app) => {
   app.use(cors())
 
   app.use('/', root)
+  app.use('/stores', stores)
+  app.use('/games', games)
+  app.use('/financials', financials)
+  app.use('/staff', staff)
   // Use authentication routes
   app.use('/auth/user', user)
-  // Use api routes
-  app.use('/cards', cards)
-  app.use('/error', error)
   // Use payment routes
-  app.use('/payment', yoco)
-  //app.use('/payment', payfast)
+  // app.use('/payment', yoco)
 }
